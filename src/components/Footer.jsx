@@ -13,7 +13,7 @@ function Footer() {
 
           <div className="flex gap-2">
             <a
-              href="https://linkedin.com/in/your-profile"
+              href="https://linkedin.com/in/nrehman19"
               aria-label="LinkedIn"
               target="_blank"
               rel="noopener noreferrer"
@@ -22,7 +22,7 @@ function Footer() {
               <FaLinkedin size={20} />
             </a>
             <a
-              href="https://github.com/your-username/your-repo"
+              href="https://github.com/naifrehman/read_withEase"
               aria-label="GitHub"
               target="_blank"
               rel="noopener noreferrer"
