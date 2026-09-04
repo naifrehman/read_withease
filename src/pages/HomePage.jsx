@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useSpring, animated } from "react-spring";
+import { animated } from "react-spring";
 import { Link } from "react-router-dom";
 import "../App.css";
 
 function AnimatedBox({ children, initialVisible = false }) {
   const [scrollY, setScrollY] = useState(0);
   const boxRef = useRef(null);
-  const handleScroll = () => {
-    setScrollY(window.scrollY);
+  const handleScroll = () => { // this function updates the scrollY state with the current vertical scroll pos of the window
+    setScrollY(window.scrollY); // update the scrollY state 
   };
 
+  // when component mounts, add a scroll event listener to the window that calls handleScroll on scroll, removes the event listener when component unmounts
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -18,18 +19,19 @@ function AnimatedBox({ children, initialVisible = false }) {
   let boxTop = boxRef.current ? boxRef.current.offsetTop : 0;
   let difference = window.innerHeight + scrollY - boxTop;
 
+/* 
   const { opacity, scale } = useSpring({
     opacity:
       difference > 0 && difference < window.innerHeight
-        ? 1 - 0.5 * (scrollY / boxTop)
+        ? 1 - 0.4 * (scrollY / boxTop)
         : initialVisible && scrollY < boxTop
         ? 1
         : 0,
     scale: difference > 0 && difference < window.innerHeight ? 1 : 0.8,
   });
-
+ */
   return (
-    <animated.div ref={boxRef} style={{ opacity, scale }}>
+    <animated.div ref={boxRef} >
       {children}
     </animated.div>
   );
@@ -37,7 +39,7 @@ function AnimatedBox({ children, initialVisible = false }) {
 
 function HomePage() {
   return (
-    <div className="flex flex-col items-center gap-6 p-8 text-center">
+    <div className="min-h-screen flex flex-col items-center gap-6 p-8 text-center bg-[#F5EFE6] text=[#3D3028]">
       <div className="w-[80%] flex flex-col md:flex-row justify-between items-center gap-8">
         <img
           src="https://cdn.dribbble.com/users/2367833/screenshots/7816190/media/b1aaf5c98510012b56422d1619dc62e8.gif"
@@ -45,18 +47,18 @@ function HomePage() {
           className="rounded-full w-[80%] h-[80%] md:w-[400px] md:h-[400px] object-cover"
         />
         <div className="flex flex-col items-center gap-2 text-center">
-          <h1 className="text-3xl font-bold">
+          <h1 className="text-3xl font-bold text-[#3D3028]">
             A free and fun way to improve reading skills for people with
             dyslexia!
           </h1>
           <div className="flex flex-col gap-4">
             <Link to="/register">
-              <button className="hover-rise px-6 py-3 text-lg bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 transition-colors">
+              <button className="hover-rise px-7 py-3 text-lg bg-[#B85C38] hover:bg-[#8F432A] text-[#FFF9F2] rounded-md shadow-md hover:bg-[#9F4D30] transition-colors">
                 Get Started
               </button>
             </Link>
             <Link to="/login">
-              <button className="hover-rise px-6 py-3 text-lg border-2 border-blue-500 text-blue-500 rounded-md hover:bg-blue-50 transition-colors">
+              <button className="hover-rise px-6 py-3 text-lg border-2 bg-[#B85C38] text-[#FFF9F2] rounded-md hover:bg-[#9F4D30] transition-colors">
                 I have an account!
               </button>
             </Link>
@@ -138,7 +140,7 @@ function HomePage() {
             <img
               src="https://cdn.dribbble.com/users/77598/screenshots/16399264/media/d86ceb1ad552398787fb76f343080aa6.gif"
               alt="Reading Image"
-              className="w-[80%] h-[80%] md:w-[400px] md:h-[400px] rounded-full mr-6 object-cover"
+              className="w-[50%] h-[50%] md:w-[400px] md:h-[400px] rounded-full mr-6 object-cover"
             />
             <div className="flex flex-col items-end gap-4 max-w-[70%]">
               <h2 className="text-2xl font-bold text-right">
