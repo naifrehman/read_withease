@@ -8,7 +8,7 @@ function LoginPage(){
     const [password, setPassword]= useState("");
     const navigate = useNavigate(); // used to programmatically navigate to different routes in the app after successful login
     const [message, setMessage] = useState(""); // state var to hold any message such as an error or successful message to user
-    const [isMessageOpen, setIsmessageOpen] = useState(false); // state var controlling visibility of message to user
+    const [isMessageOpen, setIsMessageOpen] = useState(false); // state var controlling visibility of message to user
 
 
     // try-catch to handle login with email and password using firebase auth
@@ -33,7 +33,7 @@ function LoginPage(){
                 <h1 className="text-4x1 font-bold text-gray-800">Login to ReadwithEase Account</h1>
 
                 <div className="p-6 w-full max-w-sm shadow-md border rounded-md bg-white">
-                    <form onSubmit={handleLogin}> // event handler listens for form submission
+                    <form onSubmit={handleLogin}> {/* event handler listens for form submission */}
                         <div className="flex flex-col gap-4">
 
                             <div>
@@ -50,7 +50,7 @@ function LoginPage(){
                                     className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     />
                             </div>
-                            // password input field 
+                            {/* Password input field */}
                             <div>
                                 <label htmlFor="password" className="block mb-1 font-medium">
                                     Password
@@ -77,14 +77,14 @@ function LoginPage(){
                     </form>
                 </div>
 
-                // if user doesn't have an account, use routerLink to navigate to the signup page
+                {/* if user doesn't have an account, use routerLink to navigate to the signup page */}
 
                 <p>
                     Don't have an account?{" "}
                     <RouterLink to="/signup" className="text-blue-500 hover:underline">Sign Up</RouterLink>
                 </p>
 
-                // if isMessageOpen is true, which can either be a success or error message, display the message to the user
+                {/* if isMessageOpen is true, which can either be a success or error message, display the message to the user */}
                 {isMessageOpen && (
                     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
                         <div className="bg-white rounded-md shadow-lg w-full max-w-sm p-6">
