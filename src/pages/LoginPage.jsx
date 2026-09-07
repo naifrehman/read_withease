@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link as RouterLink, useNavigate } from "react-routerdom";
-import { auth } from "../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+// import { auth } from "../firebase";
+// import { signInWithEmailAndPassword } from "firebase/auth";
 
 function LoginPage(){
     const [email, setEmail] = useState("");
@@ -29,6 +29,31 @@ function LoginPage(){
 
         return(
             <>
+            <div className="flex flex-col items-center gap-6 p-8 bg-gray-100 min-h-screen">
+                <h1 className="text-4x1 font-bold text-gray-800">Login to ReadwithEase Account</h1>
+
+                <div className="p-6 w-full max-w-sm shadow-md border rounded-md bg-white">
+                    <form onSubmit={handleLogin}>
+                        <div className="flex flex-col gap-4">
+                            <div>
+                                <label htmlFor="email" className="block mb-1 font-medium">
+                                    Email Address
+                                </label>
+                                <input
+                                    id="email"
+                                    type="email"
+                                    placeholder="Enter your email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)} // update email state variable when user types in the input field
+                                    required
+                                    className="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    />
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
             </>
         )
 
